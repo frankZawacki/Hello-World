@@ -1,0 +1,50 @@
+package solution10;
+
+import java.util.Scanner;
+
+public class Solution10 {
+	
+	private static final Scanner scanner = new Scanner(System.in);
+
+	public static void main(String[] args) {
+	    int[][] arr = new int[6][6];
+
+	    for (int i = 0; i < 6; i++) {
+	        String[] arrRowItems = scanner.nextLine().split(" ");
+	        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+	        for (int j = 0; j < 6; j++) {
+	            int arrItem = Integer.parseInt(arrRowItems[j]);
+	            arr[i][j] = arrItem;
+	        }
+	    }
+
+	    scanner.close();
+
+	            int maxSum = 0;
+	            int tempSum = 0;
+
+	            for (int i = 0; i < 4; i++){
+	                for(int j = 0; j < 4; j++){
+	                    tempSum = 0;
+
+	                    tempSum += arr[i][j];
+	                    tempSum += arr[i][j + 1];
+	                    tempSum += arr[i][j + 2];
+
+	                    tempSum += arr[i + 1][j + 1];
+
+	                    tempSum += arr[i + 2][j];
+	                    tempSum += arr[i + 2][j + 1];
+	                    tempSum += arr[i + 2][j + 2];
+
+	                    if (tempSum > maxSum || i == 0 && j == 0){
+	                        maxSum = tempSum;
+	                    }
+	                }
+	            }
+	            System.out.println(maxSum);
+	        }
+	    }
+	    
+	    
